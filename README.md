@@ -1,11 +1,14 @@
-# Module 14: BREAD Functionality for Calculations
+## Module 15: Final Project
 
-## 📌 Project Overview
-This project implements full **BREAD (Browse, Read, Edit, Add, Delete)** functionality for calculations using **FastAPI**, with frontend integration, testing, and CI/CD.
+This is my final project developed using Python with Docker support.
 
----
 
 ## 🚀 Features
+
+- CRUD operations
+- Database integration
+- Docker containerization
+- GitHub integration
 
 ### 🔐 Authentication
 - User Registration
@@ -90,17 +93,18 @@ Open:
 register.html → Register user
 login.html → Login & get token
 index.html → Perform calculations
+script.js
 
 
 🐳 Docker
 
 Build image
 
-docker build -t module14-bread-calculations .
+docker run -p 5000:5000 sm3676/backend-assignment
 
 Run container
 
-docker run -p 8000:8000 module14-bread-calculations
+docker hub https://hub.docker.com/r/sm3676/backend-assignment -- for project
 
 ⚙️ GitHub Actions (CI/CD)
 
