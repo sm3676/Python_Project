@@ -15,38 +15,51 @@
 <p id="msg"></p>
 
 <script>
+
 document.getElementById("loginBtn").addEventListener("click", async function () {
+
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
 
+    const formData = new URLSearchParams();
+
+    formData.append("username", email);
+    formData.append("password", password);
+
     try {
+
         const res = await fetch("http://127.0.0.1:8000/users/login", {
+
             method: "POST",
+
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/x-www-form-urlencoded"
             },
-            body: JSON.stringify({ email, password })
+
+            body: formData
         });
 
         const data = await res.json();
 
-        // ✅ ALWAYS show success (test ki kavali)
         if (res.ok) {
-            document.getElementById("msg").innerText = "success";
-        } else {
-            document.getElementById("msg").innerText = data.detail;
-        }
 
-        // ✅ save token
-        if (data.access_token) {
             localStorage.setItem("token", data.access_token);
+
+            document.getElementById("msg").innerText = "success";
+
+        } else {
+
+            document.getElementById("msg").innerText = "error";
         }
 
     } catch (e) {
-        document.getElementById("msg").innerText = "error";
+
         console.log(e);
+
+        document.getElementById("msg").innerText = "error";
     }
 });
+
 </script>
 
 </body>

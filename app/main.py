@@ -1,3 +1,4 @@
+from app.routes.history import router as history_router
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -21,7 +22,7 @@ Base.metadata.create_all(bind=engine)
 # ✅ Routers
 app.include_router(user.router)
 app.include_router(calculation.router)
-# ❌ REMOVE math.router
+app.include_router(history_router)
 
 # ✅ Root
 @app.get("/")

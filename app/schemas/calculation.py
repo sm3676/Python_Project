@@ -1,11 +1,19 @@
-from pydantic import BaseModel, ConfigDict
+from pydantic import ConfigDict
+from pydantic import BaseModel
+from typing import Literal
 
-# 👉 request body (POST)
 class CalculationCreate(BaseModel):
     operand1: float
     operand2: float
-    operation: str
 
+    operation: Literal[
+        "add",
+        "subtract",
+        "multiply",
+        "divide",
+        "power",
+        "mod"
+    ]
 
 # 👉 response model
 class CalculationResponse(BaseModel):
